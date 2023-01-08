@@ -1,6 +1,20 @@
 import sys
 
+def normalize(str):
+    new_str = ""
+    is_commented = False
+    for ch in str:
+        if ch == '#':
+            is_commented = True
+        elif ch == '\n':
+            is_commented = False
+        elif not is_commented and ch != ' ':
+            new_str += ch
+    return new_str
+
 def get_dist(str1, str2):
+    str1 = normalize(str1)
+    str2 = normalize(str2)
     n = len(str1)
     m = len(str2)
     if m > n:
